@@ -1,0 +1,23 @@
+apiVersion: "nais.io/v1alpha1"
+kind: "Application"
+metadata:
+  name: shout-out-link-mobility-mock
+  namespace: shout-out
+  labels:
+    team: shout-out
+spec:
+  image: "{{ image }}"
+  port: 4321
+  replicas:
+    max: 1
+    min: 1
+  env:
+    - name: BACKEND_URL
+      value: http://shout-out-api
+  accessPolicy:
+    outbound:
+      rules:
+        - application: shout-out-api
+    inbound:
+      rules:
+        - application: shout-out-api

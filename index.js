@@ -4,7 +4,7 @@ const app = express();
 app.use(express.json());
 
 const port = 4321;
-const shoutOutApiUrl = process.env.BACKEND_URL || "http://localhost:8080"
+const shoutOutApiUrl = process.env.BACKEND_URL || "http://localhost:8080";
 
 app.post("/auth/token", (req, res) => {
   res.json({

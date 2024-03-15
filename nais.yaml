@@ -7,6 +7,8 @@ metadata:
     team: shout-out
 spec:
   image: "{{ image }}"
+  ingresses:
+    - "https://shout-out-link-mobility-mock.intern.dev.nav.no"
   port: 4321
   replicas:
     max: 1

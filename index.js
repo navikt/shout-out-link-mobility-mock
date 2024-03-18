@@ -6,6 +6,10 @@ app.use(express.json());
 const port = 4321;
 const shoutOutApiUrl = process.env.BACKEND_URL || "http://localhost:8080";
 
+function random(min, max) { 
+  return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
 app.post("/auth/token", (req, res) => {
   res.json({
     access_token: "1234",
@@ -29,7 +33,7 @@ app.post("/sms/sendbatch", (req, res) => {
           resultCode: 1001,
         }),
       });
-    }, 10000);
+    }, random(2000, 60000));
 
     return {
       messageId: "abc123",

@@ -1,7 +1,7 @@
 import express from "express";
 
 const app = express();
-app.use(express.json());
+app.use(express.json({limit: '50mb'}));
 
 const port = 4321;
 const shoutOutApiUrl = process.env.BACKEND_URL || "http://localhost:8080";

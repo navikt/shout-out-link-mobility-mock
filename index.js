@@ -30,7 +30,7 @@ app.post("/sms/sendbatch", (req, res) => {
         },
         body: JSON.stringify({
           refId: m.refId,
-          resultCode: random(1, 100) === 1 ? 2203 : 1001,
+          resultCode: random(1, 1000) === 1 ? 2203 : 1001,
         }),
       });
     }, random(2000, 30000));

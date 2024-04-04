@@ -7,7 +7,7 @@ COPY package*.json .
 
 RUN npm ci
 
-COPY . .
+COPY index.js .
 
 EXPOSE 3000
 

@@ -1,16 +1,17 @@
 import express from "express";
 
 const app = express();
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({ limit: '50mb' }));
 
 const port = 4321;
 const shoutOutApiUrl = process.env.BACKEND_URL || "http://localhost:8080";
 
-function random(min, max) { 
+function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
 app.post("/auth/token", (req, res) => {
+  console.log("/auth/token");
   res.json({
     access_token: "1234",
     expires_in: 2147483647,
@@ -20,7 +21,9 @@ app.post("/auth/token", (req, res) => {
 });
 
 app.post("/sms/sendbatch", (req, res) => {
+  console.log("/sms/sendbatch");
   const messages = req.body.sendRequestMessages;
+  console.log(`Sending ${messages.length} messages`);
   const response = messages.map((m) => {
     setTimeout(() => {
       fetch(shoutOutApiUrl + "/api/v1/link/report", {
